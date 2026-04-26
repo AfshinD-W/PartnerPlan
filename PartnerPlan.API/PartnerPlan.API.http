@@ -1,0 +1,6 @@
+@PartnerPlan.API_HostAddress = http://localhost:5090
+
+GET {{PartnerPlan.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
