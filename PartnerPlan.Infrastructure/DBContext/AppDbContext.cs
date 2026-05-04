@@ -10,7 +10,6 @@ namespace PartnerPlan.Infrastructure.DBContext
         public DbSet<User> Users { get; set; }
         public DbSet<Partner> Partners { get; set; }
         public DbSet<Plan> Plans { get; set; }
-        public DbSet<PlanTask> PlanTasks { get; set; }
         public DbSet<UserProgressTask> UserProgressTasks { get; set; }
     }
 }
