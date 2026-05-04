@@ -3,9 +3,9 @@
     public class Partner
     {
         public Guid UserId { get; set; }
-        public Guid PartnerId { get; set; }
+        public Guid PartnerUserId { get; set; }
 
-        public required User User { get; set; }
-        public required User PartnerUser { get; set; }
+        public User? User { get; set; }
+        public User? PartnerUser { get; set; }
     }
 }

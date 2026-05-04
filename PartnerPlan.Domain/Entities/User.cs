@@ -7,8 +7,8 @@
         public required string HashPassword { get; set; }
         public bool IsConfirm { get; set; }
 
-        public ICollection<Plan>? Plans { get; set; }
-        public ICollection<Partner>? Partners { get; set; }
-        public ICollection<UserProgressTask>? ProgressTasks { get; set; }
+        public ICollection<Plan> Plans { get; set; } = [];
+        public ICollection<Partner> Partners { get; set; } = [];
+        public ICollection<UserProgressTask> ProgressTasks { get; set; } = [];
     }
 }
