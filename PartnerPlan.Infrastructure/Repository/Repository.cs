@@ -1,41 +1,44 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PartnerPlan.Domain.Entities;
 using PartnerPlan.Domain.Interfaces;
 
 namespace PartnerPlan.Infrastructure.BaseRepository
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public class Repository<TKey, TEntity> : IRepository<TKey, TEntity> where TKey : IEquatable<TKey> where TEntity : class, IBaseEntity<TKey>
     {
         private DbContext _dbContext;
-        private DbSet<T> _dbSet;
+        private DbSet<TEntity> _dbSet;
         public Repository(DbContext dBContext)
         {
             _dbContext = dBContext;
-            _dbSet = _dbContext.Set<T>();
+            _dbSet = _dbContext.Set<TEntity>();
         }
 
-        public async Task CreateAsync(T entity)
+        public async Task CreateAsync(TEntity entity)
         {
+            entity.Created = DateTime.Now;
             _dbSet.Add(entity);
         }
 
-        public async Task DeleteAsync(T entity)
+        public async Task DeleteAsync(TEntity entity)
         {
             _dbSet.Remove(entity);
         }
 
-        public async Task<IEnumerable<T>> GetAllAsync()
+        public async Task<IEnumerable<TEntity>> GetAllAsync()
         {
             return await _dbSet.ToListAsync();
         }
 
-        public async Task<T?> GetByIdAsybc(Guid id)
+        public async Task<TEntity?> GetByIdAsybc(TKey id)
         {
-            return await _dbSet.FirstOrDefaultAsync();
+            return await _dbSet.FirstOrDefaultAsync(t => t.Id.Equals(id));
         }
 
-        public Task UpdateAsync(T entity)
+        public async Task UpdateAsync(TEntity entity)
         {
-            throw new NotImplementedException();
+            entity.Updated = DateTime.Now;
+            _dbSet.Update(entity);
         }
     }
 }

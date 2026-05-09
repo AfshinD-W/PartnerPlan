@@ -1,11 +1,13 @@
-﻿namespace PartnerPlan.Domain.Interfaces
+﻿using PartnerPlan.Domain.Entities;
+
+namespace PartnerPlan.Domain.Interfaces
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<TKey, TEntity> where TKey : IEquatable<TKey> where TEntity : class, IBaseEntity<TKey>
     {
-        Task<T?> GetByIdAsybc(Guid id);
-        Task<IEnumerable<T>> GetAllAsync();
-        Task CreateAsync(T entity);
-        Task UpdateAsync(T entity);
-        Task DeleteAsync(T entity);
+        Task<TEntity?> GetByIdAsybc(TKey id);
+        Task<IEnumerable<TEntity>> GetAllAsync();
+        Task CreateAsync(TEntity entity);
+        Task UpdateAsync(TEntity entity);
+        Task DeleteAsync(TEntity entity);
     }
 }
