@@ -8,8 +8,6 @@ namespace PartnerPlan.Infrastructure.Configurations
     {
         public void Configure(EntityTypeBuilder<Partner> builder)
         {
-            builder.HasKey(e => new { e.UserId, e.PartnerUserId });
-
             builder.HasOne(e => e.User)
                 .WithMany(e => e.Partners)
                 .HasForeignKey(e => e.UserId)
