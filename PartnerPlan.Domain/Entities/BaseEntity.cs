@@ -1,8 +1,8 @@
 ﻿namespace PartnerPlan.Domain.Entities
 {
-    public class BaseEntity
+    public class BaseEntity<TKey> where TKey : IEquatable<TKey>
     {
-        public Guid Id { get; set; }
+        public required TKey Id { get; set; }
         public Guid CreatorId { get; set; }
         public DateTime Created { get; set; }
         public Guid UpdateorId { get; set; }

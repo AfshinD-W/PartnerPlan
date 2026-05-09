@@ -1,6 +1,6 @@
 ﻿namespace PartnerPlan.Domain.Entities
 {
-    public class Partner : BaseEntity
+    public class Partner : BaseEntity<Guid>
     {
         public Guid UserId { get; set; }
         public Guid PartnerUserId { get; set; }

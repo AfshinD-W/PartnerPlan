@@ -1,6 +1,6 @@
 ﻿namespace PartnerPlan.Domain.Entities
 {
-    public class UserProgressTask : BaseEntity
+    public class UserProgressTask : BaseEntity<Guid>
     {
         public Guid UserId { get; set; }
         public Guid PlanTaskId { get; set; }

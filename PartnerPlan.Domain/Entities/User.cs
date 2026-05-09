@@ -1,6 +1,6 @@
 ﻿namespace PartnerPlan.Domain.Entities
 {
-    public class User : BaseEntity
+    public class User : BaseEntity<Guid>
     {
         public required string Name { get; set; }
         public required string Email { get; set; }
