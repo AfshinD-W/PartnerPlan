@@ -6,8 +6,8 @@ namespace PartnerPlan.Infrastructure.BaseRepository
 {
     public class Repository<TKey, TEntity> : IRepository<TKey, TEntity> where TKey : IEquatable<TKey> where TEntity : class, IBaseEntity<TKey>
     {
-        private DbContext _dbContext;
-        private DbSet<TEntity> _dbSet;
+        private readonly DbContext _dbContext;
+        private readonly DbSet<TEntity> _dbSet;
         public Repository(DbContext dBContext)
         {
             _dbContext = dBContext;
