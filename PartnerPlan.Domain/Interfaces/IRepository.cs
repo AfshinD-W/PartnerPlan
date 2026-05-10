@@ -6,9 +6,9 @@ namespace PartnerPlan.Domain.Interfaces
     {
         Task<TEntity?> GetByIdAsybc(TKey id);
         Task<IEnumerable<TEntity>> GetAllAsync();
-        Task CreateAsync(TEntity entity);
+        Task AddAsync(TEntity entity);
         Task UpdateAsync(TEntity entity);
-        Task DeleteAsync(TEntity entity);
+        Task RemoveAsync(TEntity entity);
         Task<int> SaveChangeAsync();
     }
 }

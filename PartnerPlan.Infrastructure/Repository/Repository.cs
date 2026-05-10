@@ -14,13 +14,13 @@ namespace PartnerPlan.Infrastructure.BaseRepository
             _dbSet = _dbContext.Set<TEntity>();
         }
 
-        public async Task CreateAsync(TEntity entity)
+        public async Task AddAsync(TEntity entity)
         {
             entity.Created = DateTime.Now;
             _dbSet.Add(entity);
         }
 
-        public async Task DeleteAsync(TEntity entity)
+        public async Task RemoveAsync(TEntity entity)
         {
             _dbSet.Remove(entity);
         }
