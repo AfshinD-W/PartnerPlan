@@ -40,5 +40,10 @@ namespace PartnerPlan.Infrastructure.BaseRepository
             entity.Updated = DateTime.Now;
             _dbSet.Update(entity);
         }
+
+        public async Task<int> SaveChangeAsync()
+        {
+            return await _dbContext.SaveChangesAsync();
+        }
     }
 }
