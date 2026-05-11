@@ -35,7 +35,7 @@ namespace PartnerPlan.Application.BaseService
 
         public async Task<TEntity> UpdateAsync(TEntity entity, bool autoSave)
         {
-            TEntity updatedItem = await _repository.GetByIdAsync(entity.Id) ?? throw new Exception($"There is no record with this id: {id}");
+            TEntity updatedItem = await _repository.GetByIdAsync(entity.Id) ?? throw new Exception($"There is no record with this id: {entity.Id}");
 
             await _repository.UpdateAsync(entity);
 
