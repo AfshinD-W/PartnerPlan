@@ -10,7 +10,8 @@ namespace PartnerPlan.Application.BaseService
         {
             _repository = repository;
         }
-        public async Task<TEntity> CreateAsync(TEntity entity, bool autoSave = false)
+
+        public async Task<TEntity> CreateAsync(TEntity entity, bool autoSave)
         {
             await _repository.AddAsync(entity);
 
@@ -20,14 +21,28 @@ namespace PartnerPlan.Application.BaseService
             return entity;
         }
 
-        public async Task<TEntity> DeleteAsync(TKey id, bool autoSave = false)
+        public async Task<TEntity> DeleteAsync(TKey id, bool autoSave)
         {
-            throw new NotImplementedException();
+            TEntity deletedItem = await _repository.GetByIdAsync(id) ?? throw new Exception($"There is no record with this id: {id}");
+
+            await _repository.RemoveAsync(deletedItem);
+
+            if (autoSave)
+                await _repository.SaveChangeAsync();
+
+            return deletedItem;
         }
 
-        public async Task<TEntity> UpdateAsync(TEntity entity, bool autoSave = false)
+        public async Task<TEntity> UpdateAsync(TEntity entity, bool autoSave)
         {
-            throw new NotImplementedException();
+            TEntity updatedItem = await _repository.GetByIdAsync(entity.Id) ?? throw new Exception($"There is no record with this id: {id}");
+
+            await _repository.UpdateAsync(entity);
+
+            if (autoSave)
+                await _repository.SaveChangeAsync();
+
+            return updatedItem;
         }
     }
 }

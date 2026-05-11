@@ -30,7 +30,7 @@ namespace PartnerPlan.Infrastructure.BaseRepository
             return await _dbSet.ToListAsync();
         }
 
-        public async Task<TEntity?> GetByIdAsybc(TKey id)
+        public async Task<TEntity?> GetByIdAsync(TKey id)
         {
             return await _dbSet.FirstOrDefaultAsync(t => t.Id.Equals(id));
         }
